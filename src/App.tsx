@@ -1,54 +1,65 @@
 import './App.css';
 
-import React, { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import logo from './logo.svg';
+const initialTimer = 60;
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [timer, setTimer] = useState<number>(initialTimer);
+  const [isRunning, setIsRunning] = useState<boolean>(true);
+  const intervalId = useRef<number | null>(null);
+
+  useEffect(() => {
+    const startTimer = () => {
+      intervalId.current = setInterval(() => {
+        setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
+      }, 1000);
+    };
+
+    if (isRunning) {
+      startTimer();
+    } else {
+      clearInterval(intervalId.current as number);
+    }
+
+    return () => {
+      clearInterval(intervalId.current as number);
+    };
+  }, [isRunning]);
+
+  const handleStart = () => {
+    setIsRunning(true);
+  };
+
+  const handleStop = () => {
+    setIsRunning(false);
+  };
+
+  const handleReset = () => {
+    setTimer(initialTimer);
+    setIsRunning(false);
+  };
+
+  const renderedTimer = `${Math.floor(timer / 3600)}h ${Math.floor(
+    (timer % 3600) / 60,
+  )}m ${timer % 60}s`;
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="header">
-          🚀 Vite + React + Typescript 🤘 & <br />
-          Eslint 🔥+ Prettier
-        </p>
-
-        <div className="body">
-          <button onClick={() => setCount((count) => count + 1)}>
-            🪂 Click me : {count}
-          </button>
-
-          <p> Don&apos;t forgot to install Eslint and Prettier in Your Vscode.</p>
-
-          <p>
-            Mess up the code in <code>App.tsx </code> and save the file.
-          </p>
-          <p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            {' | '}
-            <a
-              className="App-link"
-              href="https://vitejs.dev/guide/features.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Vite Docs
-            </a>
-          </p>
-        </div>
-      </header>
+      <h1 className="timer">{renderedTimer}</h1>
+      <div className="btn-wrapper">
+        <button className="btn" onClick={handleStart}>
+          Start
+        </button>
+        <button className="btn" onClick={handleStop}>
+          Stop
+        </button>
+        <button className="btn" onClick={handleReset}>
+          Reset
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
