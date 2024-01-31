@@ -1,0 +1,18 @@
+.App {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.timer {
+    margin-top: 0;
+    font-size: 4rem;
+}

@@ -1,11 +1,15 @@
-import './App.css';
+import './App.scss';
 
 import { useEffect, useRef, useState } from 'react';
+
+import Button from './components/Button';
+import TextInput from './components/TextInput';
 
 const initialTimer = 60;
 
 const App = () => {
   const [timer, setTimer] = useState<number>(initialTimer);
+  const [value, setValue] = useState<string>(initialTimer.toString());
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const intervalId = useRef<number | null>(null);
 
@@ -19,25 +23,33 @@ const App = () => {
     if (isRunning) {
       startTimer();
     } else {
-      clearInterval(intervalId.current as number);
+      if (intervalId.current) {
+        clearInterval(intervalId.current);
+      }
     }
 
     return () => {
-      clearInterval(intervalId.current as number);
+      if (intervalId.current) clearInterval(intervalId.current);
     };
   }, [isRunning]);
 
-  const handleStart = () => {
-    setIsRunning(true);
-  };
+  useEffect(() => {
+    const parsedValue = Number(value);
+    if (isNaN(parsedValue)) return;
+    setTimer(Number(value));
+  }, [value]);
 
-  const handleStop = () => {
-    setIsRunning(false);
+  const toggle = () => {
+    setIsRunning(!isRunning);
   };
 
   const handleReset = () => {
     setTimer(initialTimer);
     setIsRunning(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
 
   const renderedTimer = `${Math.floor(timer / 3600)}h ${Math.floor(
@@ -47,16 +59,19 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="timer">{renderedTimer}</h1>
-      <div className="btn-wrapper">
-        <button className="btn" onClick={handleStart}>
-          Start
-        </button>
-        <button className="btn" onClick={handleStop}>
-          Stop
-        </button>
-        <button className="btn" onClick={handleReset}>
-          Reset
-        </button>
+      <div className="actions">
+        <Button
+          className="btn btn--primary"
+          onClick={toggle}
+          text={isRunning ? 'Stop' : 'Start'}
+        />
+        <TextInput
+          value={value}
+          onChange={handleInputChange}
+          placeholder="Enter seconds"
+        />
+
+        <Button className="btn btn--danger" onClick={handleReset} text="Reset" />
       </div>
     </div>
   );
