@@ -1,6 +1,6 @@
 # Vite React TypeScript ESLint Prettier Boilerplate
 
-This starter kit is like a toolkit for building React apps in a really smart way. Here's why you might want to use it:
+This starter kit is like a toolkit for building React apps in a really smart way. Here's why I used it:
 
 ## 1. Fast Development
    - It uses Vite, a tool that makes everything run super fast. This means you don't have to wait long for your code to show up, making coding quicker and more fun.
