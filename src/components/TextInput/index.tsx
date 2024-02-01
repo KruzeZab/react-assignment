@@ -11,6 +11,8 @@ const TextInput = (props: TextInputProps) => {
 
   return (
     <input
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      autoFocus
       className="form-control"
       type="text"
       placeholder={placeholder}
