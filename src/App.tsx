@@ -1,54 +1,38 @@
 import './App.css';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-import logo from './logo.svg';
+import ActivityCard from './components/ActivityCard';
+import ActivityForm from './components/ActivityForm';
+import { IActivity, IActivityDetail } from './components/types/activity.types';
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [activities, setActivities] = useState<IActivityDetail[]>([]);
+
+  const addActivity = (newActivity: IActivityDetail) => {
+    setActivities([...activities, newActivity]);
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="header">
-          🚀 Vite + React + Typescript 🤘 & <br />
-          Eslint 🔥+ Prettier
-        </p>
+      <ActivityForm addActivity={addActivity} />
 
-        <div className="body">
-          <button onClick={() => setCount((count) => count + 1)}>
-            🪂 Click me : {count}
-          </button>
-
-          <p> Don&apos;t forgot to install Eslint and Prettier in Your Vscode.</p>
-
-          <p>
-            Mess up the code in <code>App.tsx </code> and save the file.
-          </p>
-          <p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            {' | '}
-            <a
-              className="App-link"
-              href="https://vitejs.dev/guide/features.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Vite Docs
-            </a>
-          </p>
-        </div>
-      </header>
+      {activities.length > 0 && (
+        <>
+          <h2>Activties:</h2>
+          <div className="card-wrapper">
+            {activities.map((activity, idx) => (
+              <ActivityCard
+                user={activity.user}
+                activities={activity.activities}
+                key={idx}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default App;
