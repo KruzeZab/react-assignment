@@ -1,11 +1,10 @@
 import './index.scss';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useEffect } from 'react';
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 
 import { IActivityDetail } from '../types/activity.types';
-import schema from './schema';
+import schema from './index.schema';
 
 interface IActivityForm {
   addActivity: (activity: IActivityDetail) => void;
@@ -21,8 +20,7 @@ const ActivityForm = (props: IActivityForm) => {
     reset,
     formState: { errors },
   } = useForm<IActivityDetail>({
-    // @ts-expect-error ts(2322) -- bug from package, Recommended option: Downgrade the package
-    resolver: yupResolver<IActivityDetail>(schema),
+    resolver: yupResolver<any>(schema),
     defaultValues: {
       activities: [{ description: '', timeSpent: '' }],
     },
