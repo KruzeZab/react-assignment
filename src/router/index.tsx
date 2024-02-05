@@ -22,10 +22,10 @@ const router = createBrowserRouter([
     path: '/dayfour',
     element: <DayFour />,
   },
-  // {
-  //   path: '*',
-  //   element: <>Not Found!</>,
-  // },
+  {
+    path: '*',
+    element: <>Not Found!</>,
+  },
 ]);
 
 export default router;
