@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
+
 import DayFive from '../pages/DayFive';
-import DayTwo from '../pages/DayTwo';
-import DayThree from '../pages/DayThree';
 import DayFour from '../pages/DayFour';
+import DayThree from '../pages/DayThree';
+import DayTwo from '../pages/DayTwo';
 
 const router = createBrowserRouter([
   {
