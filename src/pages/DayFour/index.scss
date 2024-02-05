@@ -1,11 +1,13 @@
-.App {
+.dayfour {
   margin: 0 auto;
   width: 90%;
 }
 
-.card-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 20px;
+.dayfour {
+  .card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
 }

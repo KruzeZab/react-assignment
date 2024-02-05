@@ -57,21 +57,23 @@ const Timer = () => {
   )}m ${timer % 60}s`;
 
   return (
-    <div className="App">
-      <h1 className="timer">{renderedTimer}</h1>
-      <div className="actions">
-        <Button
-          className="btn btn--primary"
-          onClick={toggle}
-          text={isRunning ? 'Stop' : 'Start'}
-        />
-        <TextInput
-          value={value}
-          onChange={handleInputChange}
-          placeholder="Enter seconds"
-        />
+    <div className="daytwo">
+      <div className="App">
+        <h1 className="timer">{renderedTimer}</h1>
+        <div className="actions">
+          <Button
+            className="btn btn--primary"
+            onClick={toggle}
+            text={isRunning ? 'Stop' : 'Start'}
+          />
+          <TextInput
+            value={value}
+            onChange={handleInputChange}
+            placeholder="Enter seconds"
+          />
 
-        <Button className="btn btn--danger" onClick={handleReset} text="Reset" />
+          <Button className="btn btn--danger" onClick={handleReset} text="Reset" />
+        </div>
       </div>
     </div>
   );

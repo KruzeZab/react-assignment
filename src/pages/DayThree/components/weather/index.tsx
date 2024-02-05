@@ -11,6 +11,7 @@ const Weather = () => {
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '100vh',
+        gap: '20px',
       }}
     >
       {loading && <p>Loading...</p>}

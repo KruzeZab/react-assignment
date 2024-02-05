@@ -1,9 +1,12 @@
-.actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.timer {
-    margin-top: 0;
-    font-size: 4rem;
+.daytwo {
+    .actions {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .timer {
+        margin-top: 0;
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
 }
