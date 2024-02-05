@@ -38,10 +38,6 @@ const ActivityForm = (props: IActivityForm) => {
     reset();
   };
 
-  // useEffect(() => {
-  //   append({ description: '', timeSpent: '' });
-  // }, [append]);
-
   return (
     <div className="form-wrapper">
       <h2 className="form-title">Activity Form</h2>
