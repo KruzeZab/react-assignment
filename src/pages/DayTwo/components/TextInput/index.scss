@@ -1,0 +1,12 @@
+.form-control {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 0 10px;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: .5px solid rgb(28, 129, 224);
+    }
+}
