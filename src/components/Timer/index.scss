@@ -1,0 +1,17 @@
+.daytwo {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    .actions {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .timer {
+        margin-top: 0;
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+}

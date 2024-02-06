@@ -1,0 +1,31 @@
+.daytwo {
+  .btn {
+    border: 0;
+    background: none;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
+    padding: 10px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background-color: #eee;
+    color: #222;
+  }
+
+  .btn--primary:hover {
+    background-color: #d6d6d6;
+  }
+
+  .btn--danger {
+    background-color: rgb(216, 81, 81);
+    color: #fff;
+  }
+
+  .btn--danger:hover {
+    background-color: rgb(168, 58, 74);
+  }
+}
