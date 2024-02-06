@@ -1,3 +1,7 @@
+import './index.scss';
+
+import { useEffect, useRef, useState } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { DEFAULT_TIMER } from '../../constants';
 import {
@@ -8,9 +12,6 @@ import {
 } from '../../features/timer/timerSlice';
 import Button from '../Button';
 import TextInput from '../TextInput';
-import './index.scss';
-
-import { useEffect, useRef, useState } from 'react';
 
 const Timer = () => {
   const timer = useAppSelector(selectTimerValue);

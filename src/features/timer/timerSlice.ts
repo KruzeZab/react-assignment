@@ -1,6 +1,7 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { DEFAULT_TIMER } from '../../constants';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { RootState } from '../../app/store';
+import { DEFAULT_TIMER } from '../../constants';
 
 interface TimerState {
   value: number;
